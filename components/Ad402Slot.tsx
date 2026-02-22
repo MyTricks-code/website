@@ -278,6 +278,10 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
       <div
         ref={slotRef}
         className={`ad402-slot ${className}`}
+        role="region"
+        aria-label="Sponsored advertisement"
+        aria-live="polite"
+        aria-atomic="true"
         style={{
           width: dimensions.width,
           height: dimensions.height,
@@ -308,6 +312,10 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
         <div
           ref={slotRef}
           className={`ad402-slot ${className}`}
+          role="region"
+          aria-label="Sponsored advertisement"
+          aria-live="polite"
+          aria-atomic="true"
           style={{
             width: dimensions.width,
             height: dimensions.height,
@@ -325,8 +333,9 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
             onClick={() => {
               console.log(`Ad clicked: ${slotId}`);
             }}
+
             className="w-full h-full p-0 border-none bg-transparent cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
-            aria-label={`View Advertisement ${slotId}`}
+            aria-label={`View Advertisement ${slotId}`} aria-describedby="slot-description"
           >
             <img
               src={adContent}
@@ -348,6 +357,8 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
         {clickable && (
           <button
             onClick={handleSlotClick}
+            aria-label="Book advertising slot"
+            aria-describedby="slot-description"
             style={{
               position: 'absolute',
               top: '-8px',
@@ -397,6 +408,7 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
       ref={slotRef}
       className={`ad402-slot ${className} ${clickable ? 'cursor-pointer hover:bg-secondary transition-colors focus:ring-2 focus:ring-primary focus:outline-none' : ''}`}
       onClick={handleSlotClick}
+
       onKeyDown={(e) => {
         if (clickable && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault();
@@ -406,6 +418,10 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
       tabIndex={clickable ? 0 : -1}
       role={clickable ? 'button' : undefined}
       aria-label={clickable ? `Purchase Ad Slot ${slotId}` : undefined}
+      aria-describedby="slot-description"
+      aria-live="polite"
+      aria-atomic="true"
+
       style={{
         width: dimensions.width,
         height: dimensions.height,
@@ -446,7 +462,12 @@ export const Ad402Slot: React.FC<Ad402SlotProps> = ({
           {price} XLM • {size}
         </div>
         {queueInfo && !queueInfo.isAvailable && (
-          <div style={{ fontSize: fontSizes.small, marginBottom: '1px', lineHeight: '1.1', color: 'hsl(var(--primary))', fontWeight: 'bold' }}>
+          <div
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            style={{ fontSize: fontSizes.small, marginBottom: '1px', lineHeight: '1.1', color: 'hsl(var(--primary))', fontWeight: 'bold' }}
+          >
             {queueInfo.totalInQueue} in queue
           </div>
         )}

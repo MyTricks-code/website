@@ -86,6 +86,9 @@ export const AdSlot: React.FC<AdSlotProps> = ({
     return (
       <div
         className={`ad-slot loading ${className}`}
+        aria-label="Sponsored advertisement"
+        aria-live="polite"
+        aria-atomic="true"
         style={{
           width,
           height,
@@ -110,8 +113,12 @@ export const AdSlot: React.FC<AdSlotProps> = ({
     return (
       <div
         className={`ad-slot error ${className}`}
+        role="region"
+        aria-label="Sponsored advertisement"
+        aria-live="polite"
+        aria-atomic="true"
         style={{
-          width,
+          width, 
           height,
           maxWidth: '100%',
           maxHeight: '100%',
@@ -134,8 +141,13 @@ export const AdSlot: React.FC<AdSlotProps> = ({
     return (
       <div
         className={`ad-slot paid ${className}`}
+        role="region"
+        aria-label="Sponsored advertisement"
+        aria-live="polite"
+        aria-atomic="true"
         style={{
           width,
+
           height,
           maxWidth: '100%',
           maxHeight: '100%',
@@ -151,6 +163,8 @@ export const AdSlot: React.FC<AdSlotProps> = ({
             const slotIndex = AdService.generateSlotIndex(route, position, size);
             AdAnalytics.trackAdClick(slotIndex, adContent);
           }}
+          aria-label="Book advertising slot"
+          aria-describedby="slot-description"
           className="w-full h-full p-0 border-none bg-transparent cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
           aria-label="View Advertisement"
         >
@@ -171,6 +185,7 @@ export const AdSlot: React.FC<AdSlotProps> = ({
             }}
           />
         </button>
+          
       </div>
     );
   }
@@ -179,6 +194,10 @@ export const AdSlot: React.FC<AdSlotProps> = ({
   return (
     <div
       className={`ad-slot fallback ${className}`}
+      role="region"
+      aria-label="Sponsored advertisement"
+      aria-live="polite"
+      aria-atomic="true"
       style={{
         width,
         height,
